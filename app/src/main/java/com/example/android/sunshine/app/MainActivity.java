@@ -25,6 +25,10 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity  implements ForecastFragment.Callback {
 
+
+    //This comment was added from home to verify the multiuser upgrates
+
+
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     private final String FORECASTFRAGMENT_TAG = "FFTAG";
     private static final String DETAILFRAGMENT_TAG = "DFTAG";
