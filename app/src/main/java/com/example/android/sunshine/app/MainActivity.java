@@ -67,6 +67,9 @@ public class MainActivity extends ActionBarActivity  implements ForecastFragment
         } else {
             mTwoPane = false;
             useTodayLayout=true;
+
+            // disable the shadow in the actionbar
+            getSupportActionBar().setElevation(0f);
         }
 
         ForecastFragment forecastFragment =  ((ForecastFragment)getSupportFragmentManager()
