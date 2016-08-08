@@ -38,6 +38,10 @@ public class SunshineService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+
+        Log.i("LOG_TAG","Service started");
+
+
         String locationQuery = intent.getStringExtra(LOCATION_QUERY_EXTRA);
 
         // These two need to be declared outside the try/catch
