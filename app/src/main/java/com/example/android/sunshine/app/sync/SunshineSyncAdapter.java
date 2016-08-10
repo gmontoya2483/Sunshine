@@ -53,7 +53,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
-        Log.d(LOG_TAG, "Start sync");
+        Log.i(LOG_TAG, "Start sync....");
 
         String locationQuery= Utility.getPreferredLocation(getContext());
 
