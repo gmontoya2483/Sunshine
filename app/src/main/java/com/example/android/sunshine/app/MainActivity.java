@@ -19,11 +19,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
+import com.facebook.stetho.Stetho;
 
 public class MainActivity extends ActionBarActivity  implements ForecastFragment.Callback {
 
@@ -43,6 +43,16 @@ public class MainActivity extends ActionBarActivity  implements ForecastFragment
         super.onCreate(savedInstanceState);
         mLocation = Utility.getPreferredLocation(this);
         setContentView(R.layout.activity_main);
+
+
+
+        //initialize Stetho
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                .build()
+        );
+
 
 //        if (savedInstanceState == null) {
 //            getSupportFragmentManager().beginTransaction()
@@ -106,13 +116,18 @@ public class MainActivity extends ActionBarActivity  implements ForecastFragment
             return true;
         }
 
+        /*
         if (id == R.id.action_map) {
             openPreferredLocationInMap();
             return true;
         }
+        */
+
+
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     private void openPreferredLocationInMap() {
         String location = Utility.getPreferredLocation(this);
 
@@ -132,6 +147,7 @@ public class MainActivity extends ActionBarActivity  implements ForecastFragment
             Log.d(LOG_TAG, "Couldn't call " + location + ", no receiving apps installed!");
         }
     }
+    */
 
     @Override
     protected void onResume() {
