@@ -19,4 +19,6 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:text="@string/empty_forecast_list"/>
 
+
+
 </FrameLayout>

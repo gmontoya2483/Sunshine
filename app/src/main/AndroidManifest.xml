@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
 
 
+    <!--Permissions to check the network status -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
 
 
 
