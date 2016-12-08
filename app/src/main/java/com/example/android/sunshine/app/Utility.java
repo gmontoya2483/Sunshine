@@ -340,8 +340,9 @@ public class Utility {
     public static String getFullFriendlyDayString(Context context, long dateInMillis) {
 
         String day = getDayName(context, dateInMillis);
+        String formattedMonth=getFormattedMonthDay(context, dateInMillis);
         int formatId = R.string.format_full_friendly_date;
-        return String.format(context.getString(formatId,day,getFormattedMonthDay(context, dateInMillis)));
+        return String.format(context.getString(formatId),day,formattedMonth);
     }
 
 
