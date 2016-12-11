@@ -17,111 +17,12 @@
         android:layout_height="0dp"
         android:layout_weight="3"/>
 
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/detail_additional_pane"
+    <include layout="@layout/details_extras_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        app:columnCount="2"
-        android:background="@color/detail_accent_pane_background"
-        android:paddingBottom="@dimen/abc_action_bar_content_inset_material"
-        android:paddingTop="@dimen/abc_action_bar_content_inset_material"
-        android:paddingLeft="@dimen/forecast_detail_horizontal_padding"
-        android:paddingStart="@dimen/forecast_detail_horizontal_padding"
-        android:paddingRight="@dimen/forecast_detail_horizontal_padding"
-        android:paddingEnd="@dimen/forecast_detail_horizontal_padding">
-
-        <TextView
-            android:id="@+id/detail_humidity_label_textview"
-            android:text="@string/humidity"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1"/>
-
-        <TextView
-            android:id="@+id/detail_humidity_textview"
-            tools:text="38%"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
-            android:paddingRight="@dimen/forecast_detail_horizontal_padding" />
+        android:layout_weight="2"/>
 
 
 
 
-
-        <TextView
-            android:id="@+id/detail_pressure_label_textview"
-            android:text="@string/pressure"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1"/>
-
-
-        <TextView
-            android:id="@+id/detail_pressure_textview"
-            tools:text="995 hPa"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
-            android:paddingRight="@dimen/forecast_detail_horizontal_padding" />
-
-
-
-        <TextView
-            android:id="@+id/detail_wind_label_textview"
-            android:text="@string/wind"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1"/>
-
-
-        <TextView
-            android:id="@+id/detail_wind_textview"
-            tools:text="4km/h NW"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
-            android:paddingRight="@dimen/forecast_detail_horizontal_padding" />
-
-             />
-
-
-    </android.support.v7.widget.GridLayout>
-
-
-    <!--
-    <ImageSwitcher
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageSwitcher"
-        android:layout_gravity="right" />
-    -->
 </LinearLayout>
