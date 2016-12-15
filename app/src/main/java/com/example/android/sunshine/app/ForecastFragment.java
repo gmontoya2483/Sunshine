@@ -166,7 +166,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // use it to populate the RecyclerView it's attached to.
 
         //mForecastAdapter = new ForecastAdapter(getActivity(), null, 0);
-        mForecastAdapter = new ForecastAdapter(getActivity());
+        //mForecastAdapter = new ForecastAdapter(getActivity());
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -176,8 +176,27 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // Set the layout manager
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //View emptyView = rootView.findViewById(R.id.recyclerview_forecast_empty);
+        View emptyView=rootView.findViewById(R.id.recyclerview_forecast_empty);
 
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // The ForecastAdapter will take data from a source and
+        // use it to populate the RecyclerView it's attached to.
+        mForecastAdapter = new ForecastAdapter(getActivity(), new ForecastAdapter.ForecastAdapterOnClickHandler() {
+        @Override
+        public void onClick(Long date, ForecastAdapter.ForecastAdapterViewHolder vh) {
+                String locationSetting = Utility.getPreferredLocation(getActivity());
+                ((Callback) getActivity()).onItemSelected(WeatherContract.WeatherEntry.buildWeatherLocationWithDate(locationSetting, date));
+                mPosition = vh.getAdapterPosition();
+                }
+            }, emptyView);
+
+
+
+
+        //specify an Adapter
         mRecyclerView.setAdapter(mForecastAdapter);
 
 
@@ -207,7 +226,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // or magically appeared to take advantage of room, but data or place in the app was never
         // actually *lost*.
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY)) {
-            // The RecyclerView probably hasn't even been populated yet.  Actually perform the
+            // The Recycler View probably hasn't even been populated yet.  Actually perform the
             // swapout in onLoadFinished.
             mPosition = savedInstanceState.getInt(SELECTED_KEY);
         }
@@ -226,24 +245,20 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     // since we read the location when we create the loader, all we need to do is restart things
-    void onLocationChanged( ) {
+    void onLocationChanged() {
         updateWeather();
         getLoaderManager().restartLoader(FORECAST_LOADER, null, this);
     }
 
     private void updateWeather() {
-
-
-
         SunshineSyncAdapter.syncImmediately(getActivity());
-
     }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         // When tablets rotate, the currently selected list item needs to be saved.
-        // When no item is selected, mPosition will be set to RecyclerView.INVALID_POSITION,
+        // When no item is selected, mPosition will be set to RecyclerView.NO_POSITION,
         // so check for that before storing.
         if (mPosition != RecyclerView.NO_POSITION) {
                     outState.putInt(SELECTED_KEY, mPosition);
@@ -310,9 +325,9 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // Using the URI scheme for showing a location found on a map.  This super-handy
         // intent can is detailed in the "Common Intents" page of Android's developer site:
         // http://developer.android.com/guide/components/intents-common.html#Maps
-        if ( null != mForecastAdapter ) {
-            Cursor c = mForecastAdapter.getCursor();
-            if ( null != c ) {
+        if ( null !=mForecastAdapter ) {
+            Cursor c=mForecastAdapter.getCursor();
+            if ( null !=c) {
                 c.moveToPosition(0);
                 String posLat = c.getString(COL_COORD_LAT);
                 String posLong = c.getString(COL_COORD_LONG);
