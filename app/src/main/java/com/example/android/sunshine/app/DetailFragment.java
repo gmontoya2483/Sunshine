@@ -25,7 +25,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,7 +43,6 @@ import com.example.android.sunshine.app.data.WeatherContract.WeatherEntry;
 /**
  * A placeholder fragment containing a simple view.
  */
-
 public class DetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
@@ -53,7 +51,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
     private static final String FORECAST_SHARE_HASHTAG = " #SunshineApp";
 
-    private ShareActionProvider mShareActionProvider;
     private String mForecast;
     private Uri mUri;
     private boolean mTransitionAnimation;
@@ -184,22 +181,19 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
                     null
             );
         }
-
-        ViewParent vp=getView().getParent();
-        if (vp instanceof CardView){
+        ViewParent vp = getView().getParent();
+        if ( vp instanceof CardView ) {
             ((View)vp).setVisibility(View.INVISIBLE);
         }
-
         return null;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-            ViewParent vp=getView().getParent();
-            if (vp instanceof CardView){
-                ((View) vp).setVisibility(View.VISIBLE);
-
+            ViewParent vp = getView().getParent();
+            if ( vp instanceof CardView ) {
+                ((View)vp).setVisibility(View.VISIBLE);
             }
 
             // Read weather condition ID from cursor
@@ -268,17 +262,12 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             // We still need this for the share intent
             mForecast = String.format("%s - %s - %s/%s", dateText, description, high, low);
 
-            // If onCreateOptionsMenu has already happened, we need to update the share intent now.
-            if (mShareActionProvider != null) {
-                mShareActionProvider.setShareIntent(createShareForecastIntent());
-            }
         }
         AppCompatActivity activity = (AppCompatActivity)getActivity();
         Toolbar toolbarView = (Toolbar) getView().findViewById(R.id.toolbar);
 
         // We need to start the enter transition after the data has loaded
-        //if (activity instanceof DetailActivity) {
-        if (mTransitionAnimation) {
+        if ( mTransitionAnimation ) {
             activity.supportStartPostponedEnterTransition();
 
             if ( null != toolbarView ) {

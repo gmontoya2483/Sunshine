@@ -131,9 +131,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         // the animator can use this to re-find the original view
         ViewCompat.setTransitionName(forecastAdapterViewHolder.mIconView, "iconView" + position);
 
-
-
-
         // Read date from cursor
         long dateInMillis = mCursor.getLong(ForecastFragment.COL_WEATHER_DATE);
 

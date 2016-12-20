@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.example.android.sunshine.app;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
