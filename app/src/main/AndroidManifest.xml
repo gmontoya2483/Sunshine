@@ -25,6 +25,11 @@
 
 
 
+    <!-- Permissions for Locations -->
+    <user-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+
 
 
 
