@@ -121,6 +121,11 @@
             android:exported="false" >
         </service>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDuZLEz88URLWzJFgFDPrSJ5-vyAEB1ZjY"/>
+
+
 
 
     </application>
