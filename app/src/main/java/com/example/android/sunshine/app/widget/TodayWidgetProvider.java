@@ -21,7 +21,7 @@ import com.example.android.sunshine.app.Utility;
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
 
 /**
- * Provider for a widget showing today's weather.
+ * Provider for a horizontally expandable widget showing today's weather.
  */
 public class TodayWidgetProvider extends AppWidgetProvider {
 
